@@ -1,15 +1,15 @@
-//get grid element and button element from HTML document
+//Get grid element and button element from HTML document
 const gridElem = document.querySelector(".grid");
 const btnElem = document.querySelector("button");
 //Array that will contain the mines
 let mines = [];
 //Step counter
 let steps;
-//Element tat will contain the final message
+//Element that will contain the final message
 const msgElem = document.querySelector("h2");
 
 
-//add an EventListener in the button
+//adds an EventListener in the button
 btnElem.addEventListener("click", function () {
     //Clears the gridElem from possible cells
     gridElem.innerHTML = "";
@@ -129,7 +129,7 @@ function endGame(bool, numberSteps, arrayMines, fields) {
         for (let i = 0; i < fields.length; i++) {
             fields[i].removeEventListener("click", clickOnCell);
          } 
-         message = `Hai vinto! Hai fatto ${numberSteps} passi.`;
+         message = `Hai vinto! Il tuo punteggio è ${numberSteps}.`;
          msgElem.innerHTML = message;
     } else {
 
@@ -139,7 +139,7 @@ function endGame(bool, numberSteps, arrayMines, fields) {
                  fields[i].style.background = "red";
              }
         }
-        message = `Hai Perso! Hai fatto ${numberSteps} passi.`;
+        message = `Hai calpestato una mina! Il tuo punteggio è ${numberSteps}.`;
         msgElem.innerHTML = message;
     }
 }
