@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    background-color: lightgreen;
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+}
+
+button {
+    height: 20px;
+}
+
+.grid {
+    width: 500px;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    border: 1px solid black;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightblue {
+    background-color: lightblue;
+}
+
+select {
+    margin-left: 10px;
+}
+
+.easy {
+    width: calc(100% / 10);
+}
+
+.medium {
+    width: calc(100% / 9);
+}
+
+.hard {
+    width: calc(100% / 7);
+}
+
+h2 {
+    text-align: center;
+}
