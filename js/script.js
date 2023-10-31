@@ -8,6 +8,8 @@ let steps;
 //Element that will contain the final message
 const msgElem = document.querySelector("h2");
 
+let clickedCells = [];
+
 
 //adds an EventListener in the button
 btnElem.addEventListener("click", function () {
@@ -17,6 +19,7 @@ btnElem.addEventListener("click", function () {
     msgElem.innerHTML = "";
     //Initialize the steps counter
     steps = 0;
+
     //Gets the number of cells
     numCell = getCellNumber();
 
@@ -43,17 +46,26 @@ function getCellNumber() {
 }
 
 /**
- * Description: this function initializes a flag to false. the flag controls if the game is won or lost and creates a list with all the cell elements. The function controls if the mines array includes the clicked cell number, if it is the game is lost, else increments a step counter for each correct step. When the number of steps is equal to the number of cells minus the number of mines the flag changes to true. In any case it goes to the endGame function.
+ * Description: this function initializes a flag to false. the flag controls if the game is won or lost and creates a list with all the cell elements. The function controls if the mines array includes the clicked cell number, if it is the game is lost, else controls if the cell was clicked before if not, increments a step counter for each correct step. When the number of steps is equal to the number of cells minus the number of mines the flag changes to true. In any case it goes to the endGame function.
  * 
  */
 function clickOnCell() {
     let flag = false;
     let cellList = document.querySelectorAll(".cell");
+    
+    console.log("Clicked: ", clickedCells);
     if(mines.includes(parseInt(this.innerText))){
         endGame(flag, steps, mines, cellList);
     } else {
         this.classList.add("lightblue");
-        steps++;
+        if(!clickedCells.includes(parseInt(this.innerText))){
+            clickedCells.push(parseInt(this.innerText));
+            console.log("Celle clicked", clickedCells);
+            steps++;
+            console.log("Steps: ", steps);
+        }
+        
+        console.log("Steps: ", steps);
         if(steps === (numCell - mines.length)){
             flag = true;
             endGame(flag, steps, mines, cellList);
@@ -63,7 +75,7 @@ function clickOnCell() {
 
 /*
 * Description: this function takse a number as a parameter and returns a name of a class 
-* @param {number}
+* @params {number}
 * @retruns {String}
 */
 function getLevelClass(num) {
